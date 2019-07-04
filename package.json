@@ -21,7 +21,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "homepage": "http://ogroovitynext.github.io/widgetconfigpage",
+  "homepage": "https://eugeniol.github.io/ogroovitynext/",
   "browserslist": {
     "production": [
       ">0.2%",
