@@ -1,5 +1,11 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap');
+
+body,
+label,
+input,
+button,
+select {
+  font-family: Roboto;
 }
 
 .App-logo {
@@ -22,7 +28,26 @@
 .App-link {
   color: #61dafb;
 }
+.form-top-area,
+.form-body-area {
+  border-radius: 4px;
+  border: 1px solid #e5e9ec;
+  background-color: #ffffff;
+  margin-bottom: 30px;
+}
 
+.form-body-area .col-md-9 {
+  border-right: 1px solid #e5e9ec;
+}
+.App h1 {
+  /* Style for "Subscripti" */
+  color: #003345;
+  font-family: Raleway;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  line-height: 30px;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -30,4 +55,115 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.App .sidebar {
+  /* Style for "Rectangle" */
+  width: 300px;
+  margin-right: 50px;
+  height: 2000px;
+  background-color: #003345;
+}
+.App .page-content {
+  max-width: 1060px;
+}
+.App legend {
+  /* Style for "Widget Pre" */
+  color: #0f7292;
+  font-family: Raleway;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  line-height: 28px;
+  border: none;
+  padding-top: 20px;
+}
+.btn {
+  border-radius: 100px;
+}
+.form-actions {
+  padding: 70px 25px 0;
+  text-align: center;
+}
+.form-actions .btn {
+  width: 100%;
+}
+.widgetPreview pre {
+  text-overflow: auto;
+  height: 200px;
+  font-size: 9px;
+}
+.form-control {
+  /* Style for "Rectangle" */
+  width: 120px;
+  height: 42px;
+  border-radius: 4px;
+  border: 1px solid #d0d4d7;
+  background-color: #ffffff;
+}
+
+.rjsf .form-inline legend,
+.rjsf .field-array legend,
+.rjsf label {
+  /* Style for "Frequency" */
+  padding: 0;
+  font-weight: normal;
+  height: 40px;
+  color: #333333;
+  font-family: Roboto;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  line-height: 20px;
+  padding: 20px 0 0;
+}
+.form-group .control-label {
+  float: left;
+  width: 20%;
+}
+.form-group .control-label + * {
+  width: 80%;
+  margin-right: 5px;
+}
+.form-inline fieldset > .form-group {
+  display: inline-block;
+  vertical-align: middle;
+}
+.form-group.form-inline {
+  /* margin-bottom: 0; */
+}
+
+.form-inline .control-label {
+  display: none;
+}
+/* .form-group.form-inline .form-group .control-label + * { */
+/* width: inherit; */
+/* } */
+.field-number .form-control {
+  width: 80px;
+}
+.form-group .field-array .array-item-list {
+  float: left;
+  width: 60%;
+}
+
+.array-item .array-item-toolbox {
+  visibility: hidden;
+  left: -100px;
+}
+.field-array .array-item-add {
+  margin-left: 19.4%;
+}
+.array-item:hover .array-item-toolbox {
+  visibility: visible;
+}
+.form-group .field-array legend,
+.form-inline fieldset > legend {
+  float: left;
+  width: 20%;
+  font-size: inherit;
+  border: none;
+  margin: 0;
+}
+.form-inline .form-control {
+  width: auto;
 }
