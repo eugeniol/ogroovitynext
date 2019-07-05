@@ -81,7 +81,7 @@ select {
   border-radius: 4px;
 }
 .form-actions {
-  padding: 70px 25px 0;
+  padding: 25px 0;
   text-align: center;
 }
 .form-actions .btn {
@@ -166,4 +166,45 @@ select {
 }
 .form-inline .form-control {
   width: auto;
+}
+
+.form-group .control-label + .rdw-editor-wrapper {
+  width: 100%;
+}
+
+.rdw-editor-main {
+  border: 1px solid #ccc;
+  margin-left: 20%;
+  border-radius: 4px;
+  border: 1px solid #d0d4d7;
+  background-color: #ffffff;
+  padding: 6px 12px;
+}
+.App .nav-pills {
+  margin: 0 -15px;
+}
+.App .nav-pills li {
+  margin: 15px 0;
+}
+
+.App .nav-pills li.active {
+  background-color: #003345;
+}
+
+.App .nav-pills a {
+  color: #979ea6;
+  font-family: Raleway;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 20px;
+  text-transform: uppercase;
+  border-radius: 0;
+}
+.App .nav-pills li a:hover {
+  background-color: #144455;
+}
+.App .nav-pills li.active a {
+  background-color: #144455;
+  color: #00a7e1;
 }

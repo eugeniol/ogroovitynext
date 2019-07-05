@@ -1,9 +1,6 @@
 import React from 'react';
-import Form from 'react-jsonschema-form';
+import createForm from './createForm.js';
 
-import definitions from './definitions';
-import fields from '../fields';
-import widgets from '../widgets';
 
 export const uiSchema = {
   settings: {
@@ -42,11 +39,22 @@ export const uiSchema = {
         label: true
       }
     },
-    toolTipCopy: {
-      'ui:widget': 'textarea'
+    offerTooltipContent: {
+      'ui:widget': 'textarea',
+      // 'ui:field': 'draftRte',
+      draftRte: {
+        toolbar: {
+          options: ['inline']
+        }
+      }
     },
     upsellModalCopy: {
-      'ui:widget': 'textarea'
+      'ui:field': 'draftRte',
+      draftRte: {
+        toolbar: {
+          options: ['inline']
+        }
+      }
     }
   },
   styles: {
@@ -114,7 +122,6 @@ export const uiSchema = {
 };
 
 export const schema = {
-  ...definitions,
   type: 'object',
   properties: {
     settings: {
@@ -263,11 +270,6 @@ export const schema = {
   }
 };
 
-export const SubscriptionOptinWidgetForm = props => (
-  <Form schema={schema} uiSchema={uiSchema} fields={fields} widgets={widgets} {...props}>
-    {/* Empty div to disable action buttons  */}
-    <div />
-  </Form>
-);
+export const SubscriptionOptinWidgetForm = createForm(schema, uiSchema);
 
 export default SubscriptionOptinWidgetForm;

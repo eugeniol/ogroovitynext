@@ -2,25 +2,113 @@ import React from 'react';
 import './App.css';
 import * as OG from '@ordergroove/offers';
 import get from 'lodash/get';
-import OfferWidgetForm from './forms/SubscriptionOptinWidgetForm';
-import CompactPicker from './widgets/CompactPicker';
-import { inherits } from 'util';
+import SubscriptionOptinWidgetForm from './forms/SubscriptionOptinWidgetForm';
+import IncentivesForm from './forms/IncentivesForm';
+import ReorderForm from './forms/ReorderForm';
 
 OG.initialize('0e5de2bedc5e11e3a2e4bc764e106cf4', 'staging');
 
 const log = type => console.log.bind(console, type);
-export function App() {
-  return (
-    <div className="App">
-      <div className="col-md-2 sidebar">nav</div>
+export class App extends React.Component {
+  state = {
+    nav: 'Offers'
+  };
 
-      <div className="col-md-10 page-content">
-        <PageContent />
+  handleNavChange(ev) {
+    this.setState({ nav: ev });
+  }
+
+  render() {
+    const navAvailable = [
+      'Analytics',
+      'Customer Portal',
+      'Customer Support',
+      'Data Exports',
+      'Emails',
+      'Settings',
+      'User Management',
+      'Incentives',
+      'Reorder',
+      'Offers'
+    ];
+    const { nav } = this.state;
+    return (
+      <div className="App">
+        <div className="col-md-2 sidebar">
+          <img src="https://re.staging.v2.ordergroove.com/v2_static/209ac45846ae6bff812c0ea37a30d2c8.svg" />
+          <ul className="nav nav-pills nav-stacked">
+            {navAvailable.map(it => (
+              <li className={nav === it ? 'active' : ''}>
+                <a href="#" onClick={() => this.handleNavChange(it)}>
+                  {it}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="col-md-10 page-content">
+          <PageContent page={nav} />
+        </div>
       </div>
+    );
+  }
+}
+
+function PageContent({ page }) {
+  switch (page) {
+    case 'Offers':
+      return <OfferConfigPageContent />;
+    case 'Reorder':
+      return (
+        <PageLayout title="Reorder">
+          <TwoLayout>
+            <ReorderForm />
+            <ConextHelp />
+          </TwoLayout>
+        </PageLayout>
+      );
+    case 'Incentives':
+      return (
+        <PageLayout title="Incentives">
+          <TwoLayout>
+            <IncentivesForm />
+            <ConextHelp />
+          </TwoLayout>
+        </PageLayout>
+      );
+
+    default:
+      return <div>Hello!</div>;
+  }
+}
+
+function PageLayout({ title, ...props }) {
+  return (
+    <div className="">
+      <div className="row">
+        <div className="col-md-9">
+          <h1>{title}</h1>
+        </div>
+        <div className="col-md-3 form-actions">
+          <button className="btn btn-info btn-lg">Save</button>
+        </div>
+      </div>
+      {props.children}
     </div>
   );
 }
-class PageContent extends React.Component {
+
+function TwoLayout(props) {
+  const [left, ...right] = props.children;
+  return (
+    <div className="row form-body-area">
+      <div className="col-md-9">{left}</div>
+      <div className="col-md-3">{right}</div>
+    </div>
+  );
+}
+
+class OfferConfigPageContent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -77,24 +165,35 @@ class PageContent extends React.Component {
           <div className="col-md-12">
             <h1>Subscription Opt-in Widget</h1>
           </div>
-  
         </div>
-        
+
         <div className="row form-top-area">
           <div className="col-md-9">
             <style
               dangerouslySetInnerHTML={{
                 __html: `* {
                 --og-global-font-familiy: ${get(formData, 'styles.global.familly', 'inherit')};
-                --og-global-font-size: ${get(formData, 'styles.global.size', '12')}${get(formData, 'styles.global.unit', 'px')};
+                --og-global-font-size: ${get(formData, 'styles.global.size', '12')}${get(
+                  formData,
+                  'styles.global.unit',
+                  'px'
+                )};
                 --og-global-font-color: ${get(formData, 'styles.global.color', 'inherit')};
                 
                 --og-tooltip-font-familiy: ${get(formData, 'styles.tooltip.familly', 'inherit')};
-                --og-tooltip-font-size: ${get(formData, 'styles.tooltip.size', '12')}${get(formData, 'styles.tooltip.unit', 'px')};
+                --og-tooltip-font-size: ${get(formData, 'styles.tooltip.size', '12')}${get(
+                  formData,
+                  'styles.tooltip.unit',
+                  'px'
+                )};
                 --og-tooltip-font-color: ${get(formData, 'styles.tooltip.color', 'inherit')};
                 
                 --og-upsell-font-familiy: ${get(formData, 'styles.upsell.familly', 'inherit')};
-                --og-upsell-font-size: ${get(formData, 'styles.upsell.size', '12')}${get(formData, 'styles.upsell.unit', 'px')};
+                --og-upsell-font-size: ${get(formData, 'styles.upsell.size', '12')}${get(
+                  formData,
+                  'styles.upsell.unit',
+                  'px'
+                )};
                 --og-upsell-font-color: ${get(formData, 'styles.upsell.color', 'inherit')};
                 --og-upsell-background-color: ${get(formData, 'styles.upsellColor', 'inherit')};
               }`
@@ -109,7 +208,7 @@ class PageContent extends React.Component {
 
         <div className="row form-body-area">
           <div className="col-md-9">
-            <OfferWidgetForm
+            <SubscriptionOptinWidgetForm
               formData={formData}
               onChange={this.onChange()}
               onSubmit={log('submit')}
