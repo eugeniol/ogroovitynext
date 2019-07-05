@@ -24,10 +24,6 @@ select {
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
-}
 .form-top-area,
 .form-body-area {
   border-radius: 4px;
@@ -80,6 +76,9 @@ select {
 }
 .btn {
   border-radius: 100px;
+}
+.btn-group .btn {
+  border-radius: 4px;
 }
 .form-actions {
   padding: 70px 25px 0;
@@ -148,7 +147,8 @@ select {
 
 .array-item .array-item-toolbox {
   visibility: hidden;
-  left: -100px;
+  left: -75px;
+  top: 5px;
 }
 .field-array .array-item-add {
   margin-left: 19.4%;

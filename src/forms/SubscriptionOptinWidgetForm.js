@@ -14,9 +14,26 @@ export const uiSchema = {
       items: {
         classNames: 'form-inline'
       }
+    },
+    offerType: {
+      'ui:help': (
+        <a href="#" className="badge" title="some help here">
+          ?
+        </a>
+      )
     }
   },
   textCopy: {
+    'ui:order': [
+      'defaultFrequencyCopy',
+      'offerOptInLabel',
+      'offerEveryLabel',
+      'offerOptOutLabel',
+      'toolTip',
+      'offerTooltipTrigger',
+      'offerTooltipContent',
+      '*'
+    ],
     'ui:options': {
       label: false
     },
@@ -113,32 +130,29 @@ export const schema = {
           default: 'Recommended',
           title: 'Default frequency copy'
         },
-        subscribeOptionCopy: {
+        offerOptInLabel: {
           type: 'string',
           default: 'Subscribe and get 20% off',
           title: 'Subscribe option copy'
         },
-        oneTimeOptionCopy: {
+        offerEveryLabel: {
+          type: 'string',
+          default: 'Ships Every: ',
+          title: 'Subscribe frequency label'
+        },
+        offerOptOutLabel: {
           type: 'string',
           default: 'One-time    ',
           title: 'One-time option copy'
         },
         toolTip: {
-          type: 'boolean',
-          default: 'Add tool tip',
-          title: 'Tool tip'
+          // type: 'boolean',
+          default: false,
+          title: 'Tool tip',
+          enum: [false, true],
+          enumNames: ['No', 'Yes']
         },
-        toolTipLinkCopy: {
-          type: 'string',
-          default: 'More info',
-          title: 'Tool tip link copy'
-        },
-        toolTipCopy: {
-          type: 'string',
-          default:
-            'Subscribe to this product and have it conveniently delivered to you at the frequency you choose! Read the FAQ here. Promotion subject to change.',
-          title: 'Tool tip copy'
-        },
+
         upsellCopy: {
           type: 'string',
           default: 'Add to upcoming subscription order and receive 20% off',
@@ -174,6 +188,38 @@ export const schema = {
           type: 'string',
           default: 'Add',
           title: 'Upsell modal add button'
+        }
+      },
+      dependencies: {
+        toolTip: {
+          oneOf: [
+            {
+              properties: {
+                toolTip: {
+                  enum: [false]
+                }
+              }
+            },
+            {
+              properties: {
+                toolTip: {
+                  enum: [true]
+                },
+                offerTooltipTrigger: {
+                  type: 'string',
+                  default: 'More info',
+                  title: 'Tool tip link copy'
+                },
+                offerTooltipContent: {
+                  type: 'string',
+                  default:
+                    'Subscribe to this product and have it conveniently delivered to you at the frequency you choose! Read the FAQ here. Promotion subject to change.',
+                  title: 'Tool tip copy'
+                }
+              },
+              required: ['How old is your pet?']
+            }
+          ]
         }
       }
     },

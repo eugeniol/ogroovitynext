@@ -1,17 +1,18 @@
 import React from 'react';
 import './App.css';
-
+import * as OG from '@ordergroove/offers';
+import get from 'lodash/get';
 import OfferWidgetForm from './forms/SubscriptionOptinWidgetForm';
 import CompactPicker from './widgets/CompactPicker';
+import { inherits } from 'util';
+
+OG.initialize('0e5de2bedc5e11e3a2e4bc764e106cf4', 'staging');
 
 const log = type => console.log.bind(console, type);
 export function App() {
   return (
     <div className="App">
-      <div className="col-md-2 sidebar">
-        
-        nav
-      </div>
+      <div className="col-md-2 sidebar">nav</div>
 
       <div className="col-md-10 page-content">
         <PageContent />
@@ -66,21 +67,46 @@ class PageContent extends React.Component {
   }
   render() {
     const formData = this.state.formData;
+    const { settings, textCopy, styles } = formData;
+    console.log(styles);
+    OG.config({ ...settings });
+    OG.setLocale({ ...textCopy });
     return (
       <div className="">
         <div className="row">
           <div className="col-md-12">
             <h1>Subscription Opt-in Widget</h1>
           </div>
+  
         </div>
+        
         <div className="row form-top-area">
           <div className="col-md-9">
+            <style
+              dangerouslySetInnerHTML={{
+                __html: `* {
+                --og-global-font-familiy: ${get(formData, 'styles.global.familly', 'inherit')};
+                --og-global-font-size: ${get(formData, 'styles.global.size', '12')}${get(formData, 'styles.global.unit', 'px')};
+                --og-global-font-color: ${get(formData, 'styles.global.color', 'inherit')};
+                
+                --og-tooltip-font-familiy: ${get(formData, 'styles.tooltip.familly', 'inherit')};
+                --og-tooltip-font-size: ${get(formData, 'styles.tooltip.size', '12')}${get(formData, 'styles.tooltip.unit', 'px')};
+                --og-tooltip-font-color: ${get(formData, 'styles.tooltip.color', 'inherit')};
+                
+                --og-upsell-font-familiy: ${get(formData, 'styles.upsell.familly', 'inherit')};
+                --og-upsell-font-size: ${get(formData, 'styles.upsell.size', '12')}${get(formData, 'styles.upsell.unit', 'px')};
+                --og-upsell-font-color: ${get(formData, 'styles.upsell.color', 'inherit')};
+                --og-upsell-background-color: ${get(formData, 'styles.upsellColor', 'inherit')};
+              }`
+              }}
+            />
             <WidgetPreview formData={formData} />
           </div>
           <div className="col-md-3 form-actions">
             <button className="btn btn-info btn-lg">Save</button>
           </div>
         </div>
+
         <div className="row form-body-area">
           <div className="col-md-9">
             <OfferWidgetForm
@@ -103,6 +129,8 @@ function WidgetPreview({ formData }) {
   return (
     <fieldset className="widgetPreview">
       <legend>Widget preview</legend>
+      <og-offer product="UD729" />
+      <hr />
       <pre>{JSON.stringify(formData, null, 4)}</pre>
     </fieldset>
   );
