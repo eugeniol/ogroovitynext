@@ -1,15 +1,17 @@
 {
   "files": {
-    "main.css": "/ogroovitynext/static/css/main.a0f4c20e.chunk.css",
-    "main.js": "/ogroovitynext/static/js/main.29062ad3.chunk.js",
-    "main.js.map": "/ogroovitynext/static/js/main.29062ad3.chunk.js.map",
+    "main.css": "/ogroovitynext/static/css/main.ad82f05e.chunk.css",
+    "main.js": "/ogroovitynext/static/js/main.6628a35f.chunk.js",
+    "main.js.map": "/ogroovitynext/static/js/main.6628a35f.chunk.js.map",
     "runtime~main.js": "/ogroovitynext/static/js/runtime~main.ceec0cab.js",
     "runtime~main.js.map": "/ogroovitynext/static/js/runtime~main.ceec0cab.js.map",
-    "static/js/2.d3408737.chunk.js": "/ogroovitynext/static/js/2.d3408737.chunk.js",
-    "static/js/2.d3408737.chunk.js.map": "/ogroovitynext/static/js/2.d3408737.chunk.js.map",
+    "static/css/2.2fe65d49.chunk.css": "/ogroovitynext/static/css/2.2fe65d49.chunk.css",
+    "static/js/2.d4ec124e.chunk.js": "/ogroovitynext/static/js/2.d4ec124e.chunk.js",
+    "static/js/2.d4ec124e.chunk.js.map": "/ogroovitynext/static/js/2.d4ec124e.chunk.js.map",
     "index.html": "/ogroovitynext/index.html",
-    "precache-manifest.bdaea8063b8496a94aff34bb581d07a6.js": "/ogroovitynext/precache-manifest.bdaea8063b8496a94aff34bb581d07a6.js",
+    "precache-manifest.fbe6529afe3e93b75c583c26d9ab4463.js": "/ogroovitynext/precache-manifest.fbe6529afe3e93b75c583c26d9ab4463.js",
     "service-worker.js": "/ogroovitynext/service-worker.js",
-    "static/css/main.a0f4c20e.chunk.css.map": "/ogroovitynext/static/css/main.a0f4c20e.chunk.css.map"
+    "static/css/2.2fe65d49.chunk.css.map": "/ogroovitynext/static/css/2.2fe65d49.chunk.css.map",
+    "static/css/main.ad82f05e.chunk.css.map": "/ogroovitynext/static/css/main.ad82f05e.chunk.css.map"
   }
 }
