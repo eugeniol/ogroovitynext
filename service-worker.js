@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/ogroovitynext/precache-manifest.b120c8080c111e9c4f60f700be1d9280.js"
+  "/ogroovitynext/precache-manifest.bdaea8063b8496a94aff34bb581d07a6.js"
 );
 
 self.addEventListener('message', (event) => {
