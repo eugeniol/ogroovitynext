@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/ogroovitynext/static/css/main.e6051c07.chunk.css",
-    "main.js": "/ogroovitynext/static/js/main.e0c6e93d.chunk.js",
-    "main.js.map": "/ogroovitynext/static/js/main.e0c6e93d.chunk.js.map",
+    "main.css": "/ogroovitynext/static/css/main.8a61ff15.chunk.css",
+    "main.js": "/ogroovitynext/static/js/main.2e3d4fc3.chunk.js",
+    "main.js.map": "/ogroovitynext/static/js/main.2e3d4fc3.chunk.js.map",
     "runtime~main.js": "/ogroovitynext/static/js/runtime~main.ceec0cab.js",
     "runtime~main.js.map": "/ogroovitynext/static/js/runtime~main.ceec0cab.js.map",
     "static/css/2.b5266273.chunk.css": "/ogroovitynext/static/css/2.b5266273.chunk.css",
     "static/js/2.d48db461.chunk.js": "/ogroovitynext/static/js/2.d48db461.chunk.js",
     "static/js/2.d48db461.chunk.js.map": "/ogroovitynext/static/js/2.d48db461.chunk.js.map",
     "index.html": "/ogroovitynext/index.html",
-    "precache-manifest.4b5188d9e65853d80b78c32dac4ed47a.js": "/ogroovitynext/precache-manifest.4b5188d9e65853d80b78c32dac4ed47a.js",
+    "precache-manifest.937fa20d4517ffa7869d65c07f367225.js": "/ogroovitynext/precache-manifest.937fa20d4517ffa7869d65c07f367225.js",
     "service-worker.js": "/ogroovitynext/service-worker.js",
     "static/css/2.b5266273.chunk.css.map": "/ogroovitynext/static/css/2.b5266273.chunk.css.map",
-    "static/css/main.e6051c07.chunk.css.map": "/ogroovitynext/static/css/main.e6051c07.chunk.css.map"
+    "static/css/main.8a61ff15.chunk.css.map": "/ogroovitynext/static/css/main.8a61ff15.chunk.css.map"
   }
 }
