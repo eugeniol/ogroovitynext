@@ -11,7 +11,7 @@ OG.initialize('0e5de2bedc5e11e3a2e4bc764e106cf4', 'staging');
 const log = type => console.log.bind(console, type);
 export class App extends React.Component {
   state = {
-    nav: 'Offers'
+    nav: 'Incentives'
   };
 
   handleNavChange(ev) {
@@ -32,19 +32,22 @@ export class App extends React.Component {
       'Offers'
     ];
     const { nav } = this.state;
+    const navEl = navAvailable.map(it => (
+      <li className={nav === it ? 'active' : ''}>
+        <a href="#" onClick={() => this.handleNavChange(it)}>
+          {it}
+        </a>
+      </li>
+    ));
+
     return (
       <div className="App">
-        <div className="col-md-2 sidebar">
+        <div className="col-lg-2 sidebar visible-lg-block">
           <img src="https://re.staging.v2.ordergroove.com/v2_static/209ac45846ae6bff812c0ea37a30d2c8.svg" />
-          <ul className="nav nav-pills nav-stacked">
-            {navAvailable.map(it => (
-              <li className={nav === it ? 'active' : ''}>
-                <a href="#" onClick={() => this.handleNavChange(it)}>
-                  {it}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <ul className="nav nav-pills nav-stacked">{navEl}</ul>
+        </div>
+        <div className="hidden-lg">
+          <ul className="nav nav-pills">{navEl}</ul>
         </div>
         <div className="col-md-10 page-content">
           <PageContent page={nav} />

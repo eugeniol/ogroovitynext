@@ -1,7 +1,6 @@
 import React from 'react';
 import createForm from './createForm.js';
 
-
 export const uiSchema = {
   settings: {
     defaultFrequency: {
@@ -153,11 +152,9 @@ export const schema = {
           title: 'One-time option copy'
         },
         toolTip: {
-          // type: 'boolean',
+          type: 'boolean',
           default: false,
-          title: 'Tool tip',
-          enum: [false, true],
-          enumNames: ['No', 'Yes']
+          title: 'Add a tool tip'
         },
 
         upsellCopy: {
@@ -224,7 +221,7 @@ export const schema = {
                   title: 'Tool tip copy'
                 }
               },
-              required: ['How old is your pet?']
+              required: ['toolTip']
             }
           ]
         }

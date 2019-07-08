@@ -208,3 +208,8 @@ select {
   background-color: #144455;
   color: #00a7e1;
 }
+
+.field-boolean input {
+  position: absolute;
+  left: 23%;
+}
