@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap');
+@import '~bootstrap/dist/css/bootstrap.css';
+@import url('//fonts.googleapis.com/css?family=Raleway|Roboto&display=swap');
 
 body,
 label,
@@ -24,6 +25,7 @@ select {
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
 .form-top-area,
 .form-body-area {
   border-radius: 4px;
@@ -212,4 +214,19 @@ select {
 .field-boolean input {
   position: absolute;
   left: 23%;
+}
+
+#contextHelp {
+  position: absolute;
+  transition: all 0.4s ease 0.2s;
+  top: 0; /* start out at position 0 */
+}
+#contextHelp .badge-info {
+  background: #09f;
+  position: absolute;
+  top: 10px;
+  left: -25px;
+}
+#contextHelp h3 {
+  margin-top: 8px;
 }

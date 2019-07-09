@@ -151,12 +151,11 @@ export const schema = {
           default: 'One-time    ',
           title: 'One-time option copy'
         },
-        toolTip: {
+        showTooltip: {
           type: 'boolean',
           default: false,
           title: 'Add a tool tip'
-        },
-
+        },  
         upsellCopy: {
           type: 'string',
           default: 'Add to upcoming subscription order and receive 20% off',
@@ -195,18 +194,11 @@ export const schema = {
         }
       },
       dependencies: {
-        toolTip: {
+        showTooltip: {
           oneOf: [
             {
               properties: {
-                toolTip: {
-                  enum: [false]
-                }
-              }
-            },
-            {
-              properties: {
-                toolTip: {
+                showTooltip: {
                   enum: [true]
                 },
                 offerTooltipTrigger: {

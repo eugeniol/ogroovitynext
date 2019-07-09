@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@ordergroove/offers": "^2.0.5",
+    "bootstrap": "3.4.1",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
     "react": "^16.8.6",
@@ -23,7 +24,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "build:umd": "./node_modules/.bin/webpack-cli --config webpack.conf.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -41,7 +43,12 @@
       "last 1 safari version"
     ]
   },
+  "main": "build/umd/main.js",
   "devDependencies": {
-    "gh-pages": "^2.0.1"
+    "gh-pages": "^2.0.1",
+    "less": "^3.9.0",
+    "less-loader": "^5.0.0",
+    "node-sass": "^4.12.0",
+    "webpack-cli": "^3.3.5"
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import * as OG from '@ordergroove/offers';
 import get from 'lodash/get';
 import SubscriptionOptinWidgetForm from './forms/SubscriptionOptinWidgetForm';
@@ -10,10 +10,12 @@ OG.initialize('0e5de2bedc5e11e3a2e4bc764e106cf4', 'staging');
 
 const log = type => console.log.bind(console, type);
 export class App extends React.Component {
-  state = {
-    nav: 'Incentives'
-  };
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      nav: props.nav || 'Offers'
+    };
+  }
   handleNavChange(ev) {
     this.setState({ nav: ev });
   }
@@ -42,13 +44,17 @@ export class App extends React.Component {
 
     return (
       <div className="App">
-        <div className="col-lg-2 sidebar visible-lg-block">
-          <img src="https://re.staging.v2.ordergroove.com/v2_static/209ac45846ae6bff812c0ea37a30d2c8.svg" />
-          <ul className="nav nav-pills nav-stacked">{navEl}</ul>
-        </div>
-        <div className="hidden-lg">
-          <ul className="nav nav-pills">{navEl}</ul>
-        </div>
+        {!this.props.hideNav && (
+          <div className="col-lg-2 sidebar visible-lg-block">
+            <img src="https://re.staging.v2.ordergroove.com/v2_static/209ac45846ae6bff812c0ea37a30d2c8.svg" />
+            <ul className="nav nav-pills nav-stacked">{navEl}</ul>
+          </div>
+        )}
+        {this.props.hideNav && (
+          <div className="hidden-lg">
+            <ul className="nav nav-pills">{navEl}</ul>
+          </div>
+        )}
         <div className="col-md-10 page-content">
           <PageContent page={nav} />
         </div>
@@ -85,6 +91,14 @@ function PageContent({ page }) {
   }
 }
 
+const SaveToLocalStorage = ({ name, value }) => {
+  return (
+    <button className="btn btn-info btn-lg" onClick={ev => localStorage.setItem(name, JSON.stringify(value))}>
+      Save
+    </button>
+  );
+};
+
 function PageLayout({ title, ...props }) {
   return (
     <div className="">
@@ -115,7 +129,7 @@ class OfferConfigPageContent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      formData: {}
+      formData: JSON.parse(localStorage.getItem('SubscriptionOptinWidgetForm') || '{}')
     };
   }
   // componentWillMount() {
@@ -160,7 +174,11 @@ class OfferConfigPageContent extends React.Component {
     const formData = this.state.formData;
     const { settings, textCopy, styles } = formData;
     console.log(styles);
-    OG.config({ ...settings });
+    OG.config({
+      ...settings,
+      // some extra fields are in copy area but are really config
+      showTooltip: textCopy.showTooltip
+    });
     OG.setLocale({ ...textCopy });
     return (
       <div className="">
@@ -205,7 +223,7 @@ class OfferConfigPageContent extends React.Component {
             <WidgetPreview formData={formData} />
           </div>
           <div className="col-md-3 form-actions">
-            <button className="btn btn-info btn-lg">Save</button>
+            <SaveToLocalStorage name="SubscriptionOptinWidgetForm" value={formData} />
           </div>
         </div>
 
@@ -232,15 +250,16 @@ function WidgetPreview({ formData }) {
     <fieldset className="widgetPreview">
       <legend>Widget preview</legend>
       <og-offer product="UD729" />
-      <hr />
-      <pre>{JSON.stringify(formData, null, 4)}</pre>
+      {/* <hr /> */}
+      {/* <pre>{JSON.stringify(formData, null, 4)}</pre> */}
     </fieldset>
   );
 }
 
 function ConextHelp(props) {
   return (
-    <div>
+    <div id="contextHelp">
+      <span className="badge badge-info">?</span>
       <h3>What is a widget?</h3>
       <p>
         Welcome to the incentives page where you learn things about incentives. This would be high level info about this
